@@ -4,9 +4,9 @@ BOARD_DIMENSION = 3
 
 def new_board():
     board = []
-    for x in range(0, BOARD_DIMENSION):
+    for _ in range(0, BOARD_DIMENSION):
         column = []
-        for y in range(BOARD_DIMENSION):
+        for _ in range(BOARD_DIMENSION):
             column.append(None)
         board.append(column)
     return board

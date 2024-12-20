@@ -3,7 +3,7 @@
 ## Steps
 
 - [x] Make a board
-- [ ] Render the board
+- [x] Render the board
 - [ ] Get inputs
 - [ ] Apply inputs to board
 - [ ] Make sure everything works
