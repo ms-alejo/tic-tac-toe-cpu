@@ -4,7 +4,7 @@
 
 - [x] Make a board
 - [x] Render the board
-- [ ] Get inputs
+- [x] Get inputs
 - [ ] Apply inputs to board
 - [ ] Make sure everything works
 - [ ] Winner check

@@ -35,11 +35,19 @@ def render(board):
     print("  -----")
 
 
+def get_move():
+    x = int(input("Please input your move's X coordinate position?: "))
+    y = int(input("Please input your move's Y coordinate position?: "))
+    return {x, y}
+
+
 def main():
     board = new_board()
     board[0][1] = "X"
     board[2][0] = "O"
     render(board)
+    x, y = get_move()
+    print(f"{x} , {y}")
 
 
 if __name__ == "__main__":
