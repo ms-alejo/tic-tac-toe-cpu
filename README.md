@@ -16,6 +16,7 @@ Save the provided `main.py` file on your local machine.
 Run the script using Python:
 ```bash
 python tic_tac_toe.py
+```
 
 ### 3. Select Game Mode
 Choose between two game modes when prompted:
