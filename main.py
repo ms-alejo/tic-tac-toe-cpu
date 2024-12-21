@@ -63,6 +63,34 @@ def is_full(board):
     return True
 
 
+def get_winner(board):
+    lines = []  # rows, columns and diagonals list
+
+    # rows
+    for row in board:
+        lines.append(row)
+
+    # columns
+    for col in range(BOARD_DIMENSION):
+        column = [board[row][col] for row in range(BOARD_DIMENSION)]
+        lines.append(column)
+
+    # diagonals
+    diagonal_1 = [board[i][i] for i in range(BOARD_DIMENSION)]
+    diagonal_2 = [board[i][BOARD_DIMENSION - 1 - i] for i in range(BOARD_DIMENSION)]
+    lines.append(diagonal_1)
+    lines.append(diagonal_2)
+
+    # check lines for winner
+    for line in lines:
+        if line.count("X") == BOARD_DIMENSION:
+            return "X"
+        if line.count("O") == BOARD_DIMENSION:
+            return "O"
+
+    return None
+
+
 def main():
     board = new_board()
     render(board)
@@ -75,9 +103,15 @@ def main():
         x, y = get_move()
         if make_move(board, x, y, players[curr_player_idx]):
             render(board)
+            winner = get_winner(board)
+
+            if winner:
+                print(f"Player {winner} has won!")
+
             if is_full(board):
                 print("The game is a draw!")
                 break
+
             curr_player_idx = 1 - curr_player_idx
 
 

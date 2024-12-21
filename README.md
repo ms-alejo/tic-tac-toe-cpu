@@ -7,8 +7,8 @@
 - [x] Get inputs
 - [x] Apply inputs to board
 - [x] Make sure everything works
-- [ ] Winner check
-- [ ] Testing
+- [x] Winner check
+- [x] Testing
 - [ ] Make a cpu that makes random moves
 - [ ] Ask for usernames
 - [ ] Networked through TCP?
