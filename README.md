@@ -5,8 +5,8 @@
 - [x] Make a board
 - [x] Render the board
 - [x] Get inputs
-- [ ] Apply inputs to board
-- [ ] Make sure everything works
+- [x] Apply inputs to board
+- [x] Make sure everything works
 - [ ] Winner check
 - [ ] Testing
 - [ ] Make a cpu that makes random moves
