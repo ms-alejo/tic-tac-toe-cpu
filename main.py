@@ -1,3 +1,5 @@
+import random
+
 # constants
 
 BOARD_DIMENSION = 3
@@ -50,9 +52,12 @@ def get_move():
 
 
 def make_move(board, x_coord, y_coord, player):
-    updated_board = board
-    updated_board[x_coord][y_coord] = player
-    return updated_board
+    if board[x_coord][y_coord] is None:
+        board[x_coord][y_coord] = player
+        return True
+    else:
+        print("Cell is already occupied. Please try again.")
+        return False
 
 
 def is_full(board):
@@ -91,28 +96,69 @@ def get_winner(board):
     return None
 
 
-def main():
-    board = new_board()
-    render(board)
-
-    players = ["X", "O"]
-    curr_player_idx = 0
-
+def get_mode():
     while True:
-        print(f"Player {players[curr_player_idx]}'s turn.")
-        x, y = get_move()
-        if make_move(board, x, y, players[curr_player_idx]):
-            render(board)
-            winner = get_winner(board)
+        print("Choose a game mode:")
+        print("1. Player vs. Player (PVP)")
+        print("2. Player vs. CPU (PvCPU)")
+        choice = input("Enter 1 or 2: ")
+        if choice in ["1", "2"]:
+            return int(choice)
+        else:
+            print("Invalid input. Please enter 1 or 2.")
 
+
+def cpu_random_move(board):
+    legal_moves = [
+        (x, y)
+        for x in range(BOARD_DIMENSION)
+        for y in range(BOARD_DIMENSION)
+        if board[x][y] is None
+    ]
+    return random.choice(legal_moves) if legal_moves else None
+
+
+def main():
+    try:
+        board = new_board()
+        render(board)
+
+        game_mode = get_mode()
+
+        players = ["X", "O"]
+        curr_player_idx = 0
+
+        while True:
+            curr_player = players[curr_player_idx]
+
+            if game_mode == 2 and curr_player == "O":
+                print("CPU's turn...")
+                move = cpu_random_move(board)
+                if move:
+                    x, y = move
+                    make_move(board, x, y, curr_player)
+            else:
+                print(f"Player {curr_player}'s turn.")
+                while True:
+                    x, y = get_move()
+                    if make_move(board, x, y, curr_player):
+                        break
+
+            render(board)
+
+            winner = get_winner(board)
             if winner:
                 print(f"Player {winner} has won!")
+                break
 
             if is_full(board):
                 print("The game is a draw!")
                 break
 
             curr_player_idx = 1 - curr_player_idx
+
+    except KeyboardInterrupt:
+        print("\n Game interrupted. Thanks for playing!")
 
 
 if __name__ == "__main__":

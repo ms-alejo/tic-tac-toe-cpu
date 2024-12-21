@@ -9,7 +9,7 @@
 - [x] Make sure everything works
 - [x] Winner check
 - [x] Testing
-- [ ] Make a cpu that makes random moves
+- [x] Make a cpu that makes random moves
 - [ ] Ask for usernames
 - [ ] Networked through TCP?
 - [ ] League tables, statistics, and databases
